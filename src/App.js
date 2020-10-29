@@ -1,24 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
+import { Provider } from 'react-redux';
+import Navigation from './containers/Navigation';
+import Login from './containers/Login';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Home from './containers/Home';
+import LeaderBoard from './containers/LeaderBoard';
+import NewQuestion from './containers/NewQuestion';
+function App({ store }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Navigation />
+          <header className="App-header">
+            <Switch>
+              <Route path="/NewQuestion" component={NewQuestion}>
+              </Route>
+              <Route path="/LeaderBoard" component={LeaderBoard}>
+              </Route>
+              <Route path="/Home" component={Home}>
+              </Route>
+              <Route path="/" component={Login}>
+              </Route>
+            </Switch>
+          </header>
+
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
