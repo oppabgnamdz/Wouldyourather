@@ -1,1 +1,4 @@
 export const LOGIN = "LOGIN";
+export const GETALLUSERS = "GETALLUSERS";
+export const GETALLQUESTIONS = "GETALLQUESTIONS";
+export const SAVEQUESTION = "SAVEQUESTION"

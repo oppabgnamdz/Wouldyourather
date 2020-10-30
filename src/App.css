@@ -53,3 +53,37 @@
   border-width: 1px;
   border-color: black;
 }
+.card{
+  display: flex;
+  flex-direction: row;
+}
+.card .infor{
+  display: flex;
+  flex-direction: row;
+}
+.card{
+  margin-top: 20px;
+}
+.infor_answer{
+  display: flex;
+
+}
+.infor_createQ{
+  display: flex;
+}
+h4{
+  padding: 0;
+  margin: 0!important;
+}
+.score{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-left: 20px;
+}
+p{
+  padding: 0;
+  margin: 0;
+}

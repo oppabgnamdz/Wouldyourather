@@ -4,8 +4,6 @@ import { fetchQuestion, fetchDataLogin, saveQuestionAnswer, loginAction } from '
 import { Link } from 'react-router-dom'
 
 export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer, fetchDataLogin, setNewUser }) => {
-    console.log('render');
-
     const [toggle, setToggle] = useState(true);
     const [answer, setAnswer] = useState(null);
 
@@ -100,20 +98,24 @@ export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer
                 <div className="list" style={{ background: 'black' }}>
                     {answer && answer.map(item => {
                         const obj = questions[item];
-                        console.log(obj)
                         let Choose = obj.optionOne.votes.indexOf(user.id)
-                        let check = obj.optionTwo.votes.indexOf(user.id)
-                        console.log(Choose)
                         if (Choose !== -1) {
                             Choose = () => {
                                 return (
-                                    <div>{obj.optionOne.text}</div>
+                                    <div>
+                                        <div>{obj.optionOne.text}</div>
+                                        <div>{obj.optionOne.votes.length + " / " + Object.keys(users).length + " votes"}</div>
+                                    </div>
+
                                 )
                             }
                         } else {
                             Choose = () => {
                                 return (
-                                    <div>{obj.optionTwo.text}</div>
+                                    <div>
+                                        <div>{obj.optionTwo.text}</div>
+                                        <div>{obj.optionTwo.votes.length + " / " + Object.keys(users).length + " votes"}</div>
+                                    </div>
                                 )
                             }
                         }

@@ -6,7 +6,6 @@ import { LeaderBoard } from './LeaderBoard'
 import { NewQuestion } from './NewQuestion'
 
 export const Navigation = ({ stateLogin, logOut }) => {
-    console.log(!stateLogin)
     const RenderSignout = () => {
         if (!stateLogin) return <div></div>
         else {
@@ -49,7 +48,6 @@ export const Navigation = ({ stateLogin, logOut }) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.userLogin)
     return {
         stateLogin: state.userLogin
     }

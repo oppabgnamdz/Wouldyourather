@@ -1,4 +1,4 @@
-import { LOGIN } from './actionType'
+import { LOGIN, GETALLQUESTIONS, GETALLUSERS, SAVEQUESTION } from './actionType'
 
 import * as Data from '../_Data'
 export const loginAction = (login) => {
@@ -9,7 +9,7 @@ export const loginAction = (login) => {
 }
 export const getAllUsers = (users) => {
     return {
-        type: "GETALLUSERS",
+        type: GETALLUSERS,
         users
     }
 }
@@ -22,7 +22,7 @@ export const fetchDataLogin = () => {
 }
 export const getAllQuestions = (question) => {
     return {
-        type: "GETALLQUESTIONS",
+        type: GETALLQUESTIONS,
         question
     }
 }
@@ -40,4 +40,9 @@ export const saveQuestionAnswer = ({ authedUser, qid, answer }) => {
         })
     }
 }
-
+export const saveQuestion = (question) => {
+    return dispatch => {
+        Data._saveQuestion(question).then(resolve => {
+        })
+    }
+}
