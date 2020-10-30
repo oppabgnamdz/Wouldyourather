@@ -31,8 +31,11 @@ export const NewQuestion = ({ saveQuestion, userName }) => {
 }
 
 const mapStateToProps = (state) => {
-    return {
-        userName: state.userLogin.id,
+    console.log(state)
+    if (state.userLogin) {
+        return {
+            userName: state.userLogin.id,
+        }
     }
 }
 
