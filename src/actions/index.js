@@ -36,6 +36,7 @@ export const fetchQuestion = () => {
 export const saveQuestionAnswer = ({ authedUser, qid, answer }) => {
     return dispatch => {
         Data._saveQuestionAnswer({ authedUser, qid, answer }).then(resolve => {
+            console.log('save quesion answer')
             dispatch(loginAction(Data.users[authedUser]))
         })
     }

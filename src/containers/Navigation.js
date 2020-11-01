@@ -2,16 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { loginAction } from '../actions'
-import { LeaderBoard } from './LeaderBoard'
-import { NewQuestion } from './NewQuestion'
+
 
 export const Navigation = ({ stateLogin, logOut }) => {
     const RenderSignout = () => {
+        console.log(stateLogin)
         if (!stateLogin) return <div></div>
         else {
             return (
                 <Link onClick={() => { logOut() }} to='/'>
-                    <li>Sign out</li>
+                    <div className='signout_hover' style={{ display: 'flex' }}>
+                        <img style={{ width: 40, height: 40, borderRadius: '50%' }} src={stateLogin.avatarURL}></img>
+                        <li style={{ color: 'red' }}>{stateLogin.name}</li>
+                        <li>Sign out</li>
+                    </div>
                 </Link>
             )
         }

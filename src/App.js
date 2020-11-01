@@ -12,6 +12,8 @@ import {
 import Home from './containers/Home';
 import LeaderBoard from './containers/LeaderBoard';
 import NewQuestion from './containers/NewQuestion';
+import Detail from './containers/Detail';
+import VoteResult from './containers/VoteResult';
 function App({ store }) {
   return (
     <Provider store={store}>
@@ -25,6 +27,10 @@ function App({ store }) {
               <Route path="/LeaderBoard" component={LeaderBoard}>
               </Route>
               <Route path="/Home" component={Home}>
+              </Route>
+              <Route path="/Detail" component={Detail}>
+              </Route>
+              <Route path="/VoteResult" component={VoteResult}>
               </Route>
               <Route path="/" component={Login}>
               </Route>

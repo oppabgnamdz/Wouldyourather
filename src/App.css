@@ -37,15 +37,36 @@
 }
 .navigation li{
   list-style: none;
-  margin-right: 20px;
+  padding: 10px;
   
+}
+.navigation a{
+  text-decoration: none;
+  color: black;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.navigation a:hover{
+  background-color: rgb(0, 161, 0);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  transition: 0.4s;
+  color: white;
+  
+
 }
 .navigation{
   display: flex;
   justify-content: center;
+  border-bottom: solid;
+  border-color: green;
 }
 .welcome{
-  background-color: #3d434e;
+  background-color: #F9F7F9;
+  color: black;
+}
+.welcome p{
+  font-size: 20px;
 }
 .home{
   width: 500px;
@@ -86,4 +107,66 @@ h4{
 p{
   padding: 0;
   margin: 0;
+}
+
+.card{
+  border-style: solid;
+  border-color: rgb(97, 83, 83);
+  border-width: 1px;
+  padding: 10px 0;
+}
+.infor_answer {
+ padding: 10px 0;
+}
+.infor_answer  p{
+  font-size: 15px;
+}
+.information{
+  border-right-style: dotted;
+  border-left-style: dotted;
+  border-width: 1px;
+  border-color: black;
+  padding: 0 50px;
+}
+.infor_answer_border_bottom{
+  border-bottom-style: dotted;
+  border-width: 1px;
+  border-color: black;
+}
+.information h4{
+  text-align: left;
+  font-size: 30px;
+  width: 210px;
+}
+.score{
+  margin:0 10px;
+  display: flex;
+  justify-content: space-around;
+  border-style: dotted;
+  border-width: 1px;
+  border-color: black;
+}
+.infor_score_text{
+  background-color: #F9F7F9;
+  font-size: 20px;
+  padding: 20px;
+}
+.infor_score{
+  margin: 10px;
+  background-color: lightgreen;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+.answers_or_not button{
+  padding: 10px 30px;
+  color: black;
+  background-color: #F9F7F9;
+  border: 1px solid;
+}
+button:focus{
+  outline: none;
+}
+.list_question{
+  border: 1px solid gray;
 }

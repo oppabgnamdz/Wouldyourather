@@ -25,30 +25,30 @@ export const LeaderBoard = ({ users, load }) => {
             <div key={user.id} className="card">
                 <div className="infor">
                     <div style={{ alignItems: 'center', display: 'flex' }}>
-                        <img style={{ width: 100, height: 100 }} src={user.avatarURL}></img>
+                        <img style={{ width: 100, height: 100, borderRadius: '50%' }} src={user.avatarURL}></img>
                     </div>
-                    <div>
+                    <div className="information">
                         <h4>{user.name}</h4>
-                        <div className='infor_answer'>
+                        <div className='infor_answer infor_answer_border_bottom'>
                             <p>Answered questions</p>
                             <p style={{ marginLeft: 15 }} >{scoreAnswer}</p>
                         </div>
-                        <div className='infor_createQ'>
+                        <div className='infor_answer'>
                             <p>Created questions</p>
                             <p style={{ marginLeft: 30 }}>{scoreQuestion}</p>
                         </div>
                     </div>
                 </div>
                 <div className="score">
-                    <p>Scores</p>
-                    <p>{totalScore}</p>
+                    <p className="infor_score_text">Scores</p>
+                    <p className="infor_score">{totalScore}</p>
 
                 </div>
             </div >
         )
     })
     return (
-        <div style={{ background: 'lightgreen', color: 'black' }}>
+        <div style={{ background: 'white', color: 'black' }}>
             {card}
         </div>
     )

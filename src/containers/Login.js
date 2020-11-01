@@ -29,14 +29,14 @@ export const Login = (props) => {
     return (
         <div className='home'>
             <div className="welcome">
-                <h3>Welcome to  the Would you rather App!</h3>
+                <h4>Welcome to  the Would you rather App!</h4>
                 <p>Please sign in to coutinute</p>
             </div>
             <img style={{ width: 200, height: 200 }} src="https://equimper.gallerycdn.vsassets.io/extensions/equimper/react-native-react-redux/2.0.6/1602247317454/Microsoft.VisualStudio.Services.Icons.Default" ></img>
             <div style={{ display: 'flex' }}>
 
                 {selectUser && <img style={{ width: 70, height: 70 }} src={selectUser}></img>}
-                <select defaultValue='default' onChange={handleEvent} style={{ display: 'block', width: "100%" }}>
+                <select defaultValue='default' onChange={handleEvent} style={{ display: 'block', width: "100%", padding: 20 }}>
                     <option value='default' disabled> Select account</option>
                     {Object.keys(props.getAllUser).map((item, index) => {
                         return (

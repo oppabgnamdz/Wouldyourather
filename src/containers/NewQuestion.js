@@ -18,14 +18,14 @@ export const NewQuestion = ({ saveQuestion, userName }) => {
         alert('them thanh cong')
     }
     return (
-        <div className='form' style={{ background: 'black', color: 'red' }}>
-            <h2>Create New Question</h2>
-            <p style={{ textAlign: 'left' }}>Complete the question:</p>
-            <h4 style={{ textAlign: 'left' }} >Would you rather ...</h4>
-            <input onChange={handleOptionOne} style={{ padding: 20 }} placeholder="Enter options one text here"></input>
-            <h4>OR</h4>
-            <input onChange={handleOptionTwo} style={{ padding: 20 }} placeholder="Enter options two text here"></input>
-            <button onClick={handleSubmit} style={{ background: 'lightgreen', width: "100%", height: 40, border: 'none', }}>Submit</button>
+        <div className='form' style={{ background: 'white', color: 'black', borderRadius: 5, borderColor: 'gray', borderWidth: 1, borderStyle: 'dotted' }}>
+            <h3 style={{ color: 'black', fontWeight: 'bold', textAlign: 'left', paddingTop: 10, paddingBottom: 10, paddingLeft: 50, paddingRight: 50, margin: 0, backgroundColor: '#F9F7F9', borderColor: 'gray', borderWidth: 1, borderBottomStyle: 'dotted' }}>Create New Question</h3>
+            <p style={{ textAlign: 'left', padding: 10 }}>Complete the question:</p>
+            <h4 style={{ textAlign: 'left', padding: 10 }} >Would you rather ...</h4>
+            <input placeholder='Enter Option Two Text Here' onChange={handleOptionOne} style={{ padding: 20, width: '90%', boxSizing: 'border-box' }} ></input>
+            <h4 >OR</h4>
+            <input placeholder='Enter Option Two Text Here' onChange={handleOptionTwo} style={{ padding: 20, width: '90%', boxSizing: 'border-box' }}></input>
+            <button onClick={handleSubmit} style={{ background: 'lightgreen', width: "100%", height: 40, border: 'none', marginTop: 20 }}>Submit</button>
         </div>
     )
 }
