@@ -6,8 +6,8 @@ import logo from '../images/check.png'
 import { BarLoader } from 'react-spinners'
 
 export const VoteResult = ({ user, users, questions, fetchDataLogin, fetchQuestion, match }) => {
+    const [qid, setQid] = useState(useLocation().value);
     localStorage.setItem('check', match.params.id)
-    let qid = useLocation().value;
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -17,12 +17,14 @@ export const VoteResult = ({ user, users, questions, fetchDataLogin, fetchQuesti
             setLoading(true)
         }, 1000)
     }, [])
+    console.log('uiqwueiqueiquieuqieuqwieuqwoieuqwoieuqoiwweu')
+    console.log(user)
     if (!user) {
         return (<div>
-            <div style={{ color: 'red' }}>404 not found</div>
             < Redirect from='/VoteResult' to='/' />
         </div>)
     }
+    console.log(qid)
     const vote1Number = questions[qid].optionOne.votes.length;
     const vote2Number = questions[qid].optionTwo.votes.length;
     const totalVote = vote1Number + vote2Number;

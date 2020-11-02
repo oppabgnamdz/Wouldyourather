@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { fetchDataLogin, fetchQuestion } from '../actions'
 import { BarLoader } from 'react-spinners'
+import PageError from './PageError'
 
 export const LeaderBoard = ({ users, load, user }) => {
     const [loading, setLoading] = useState(false);
@@ -13,8 +14,9 @@ export const LeaderBoard = ({ users, load, user }) => {
         }, 1000)
     }, [])
     if (!user) {
-        return (<div style={{ color: 'red' }}>404 not found</div>)
+        return (<PageError />)
     }
+
     const listDefault = Object.keys(users)
     const listSort = listDefault.sort(function (a, b) {
         const userA = users[a];

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { fetchDataLogin, loginAction } from '../actions'
+import { fetchDataLogin, loginAction, fetchQuestion } from '../actions'
 import { Link } from 'react-router-dom'
 import { BarLoader } from 'react-spinners'
 
@@ -10,12 +10,22 @@ export const Login = (props) => {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         props.fetchDataLogin();
+        props.fetchQuestion();
         setTimeout(() => {
             setLoading(true)
         }, 1000)
 
 
     }, [])
+    // console.log(Object.keys(props.questions).indexOf(localStorage.getItem('check')) === -1)
+    // console.log(localStorage.getItem('check'))
+    // if (localStorage.getItem('check')) {
+    //     if (Object.keys(props.questions).indexOf(localStorage.getItem('check')) === -1) {
+    //         log = "/PageError"
+    //     }
+    console.log(localStorage.getItem('check'))
+
+    // }
     const handleEvent = (e) => {
         setUserName(e.target.value)
         Object.keys(props.getAllUser).find(item => {
@@ -55,20 +65,28 @@ export const Login = (props) => {
                         })}
                     </select>
                 </div>
-                <Link onClick={_login} to={`/Home`}>
-                    <button style={{ background: 'lightgreen', width: "100%", height: 40, border: 'none' }}>Sign in</button>
-                </Link>
+                {localStorage.getItem('check') ? (
+                    <Link onClick={_login} to={Object.keys(props.questions).indexOf(localStorage.getItem('check')) === -1 ? `/PageError` : '/Home'}>
+                        <button style={{ background: 'lightgreen', width: "100%", height: 40, border: 'none' }}>Sign in</button>
+                    </Link>
+                ) : (
+                        <Link onClick={_login} to={'/Home'}>
+                            <button style={{ background: 'lightgreen', width: "100%", height: 40, border: 'none' }}>Sign in</button>
+                        </Link>
+                    )}
             </div>) : (<div>
                 <BarLoader size={48} width="100%" color='red' />
-            </div>)}
+            </div>)
+            }
 
-        </div>
+        </div >
     )
 }
 
 const mapStateToProps = (state) => {
     return {
         getAllUser: state.GetAllUser ? state.GetAllUser : [],
+        questions: state.GetAllQuestion
     }
 }
 
@@ -79,6 +97,8 @@ const mapDispatchToProps = dispatch => {
         },
         loginAction: (user) => {
             dispatch(loginAction(user))
+        }, fetchQuestion: () => {
+            dispatch(fetchQuestion())
         }
     }
 }

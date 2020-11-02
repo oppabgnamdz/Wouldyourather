@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchQuestion, fetchDataLogin, saveQuestionAnswer, loginAction } from '../actions'
 import { Link } from 'react-router-dom'
 import { BarLoader } from 'react-spinners'
+import PageError from './PageError'
 
 export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer, fetchDataLogin, setNewUser }) => {
     const [toggle, setToggle] = useState(true);
@@ -19,12 +20,7 @@ export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer
 
         }, 1000)
     }, [toggle])
-    if (localStorage.getItem('check')) {
-        if (Object.keys(questions).indexOf(localStorage.getItem('check')) === -1) {
-            return (<div style={{ color: 'red' }}>404 not found</div>)
-        }
-
-    }
+    
     function handleRender() {
         let filter = Object.keys(questions).filter(item => {
             if (Object.keys(user.answers).indexOf(item) == -1) {
@@ -45,7 +41,7 @@ export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer
 
     }
     if (!user) {
-        return (<div style={{ color: 'red' }}>404 not found</div>)
+        return (<PageError />)
     }
     if (questions && toggle == true) {
         handleRender();

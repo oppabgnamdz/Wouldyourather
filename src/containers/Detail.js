@@ -1,12 +1,18 @@
 import React, { Component, useState } from 'react'
 import { connect } from 'react-redux'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation, Link, Redirect } from 'react-router-dom'
 import { saveQuestionAnswer } from '../actions'
+import PageError from './PageError'
 
-export const Detail = ({ saveQuestionAnswer }) => {
+export const Detail = ({ saveQuestionAnswer, user, match }) => {
+    localStorage.setItem('check', match.params.id)
     const [valueOption, setValueOption] = useState("optionOne");
     let valueParam = useLocation().value;
-
+    if (!user) {
+        return (<div>
+            < Redirect from='/VoteResult' to='/' />
+        </div>)
+    }
     let users = valueParam.users;
     let obj = valueParam.questions[valueParam.qid]
     function handleGetImage(name) {
@@ -56,7 +62,7 @@ export const Detail = ({ saveQuestionAnswer }) => {
 
 const mapStateToProps = (state) => {
     return {
-
+        user: state.userLogin,
     }
 }
 

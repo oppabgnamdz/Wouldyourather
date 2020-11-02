@@ -1,13 +1,15 @@
 import React, { Component, useState } from 'react'
 import { connect } from 'react-redux'
 import { saveQuestion } from '../actions'
+import PageError from './PageError';
+import { Link, Redirect } from 'react-router-dom'
 
 export const NewQuestion = ({ saveQuestion, userName }) => {
     localStorage.clear();
     const [optionOne, setOptionOne] = useState();
     const [optionTwo, setOptionTwo] = useState();
     if (!userName) {
-        return (<div style={{ color: 'red' }}>404 not found</div>)
+        return (<PageError />)
     }
     function handleOptionOne(e) {
         const text = e.target.value;
@@ -19,7 +21,11 @@ export const NewQuestion = ({ saveQuestion, userName }) => {
     }
     function handleSubmit() {
         saveQuestion({ optionOneText: optionOne, optionTwoText: optionTwo, author: userName })
-        alert('them thanh cong')
+        // alert('them thanh cong')
+        // return (
+        //     < Redirect from='/NewQuestion' to='/' />
+        // )
+
     }
     return (
         <div className='form' style={{ background: 'white', color: 'black', borderRadius: 5, borderColor: 'gray', borderWidth: 1, borderStyle: 'dotted' }}>
@@ -29,7 +35,9 @@ export const NewQuestion = ({ saveQuestion, userName }) => {
             <input placeholder='Enter Option Two Text Here' onChange={handleOptionOne} style={{ padding: 20, width: '90%', boxSizing: 'border-box' }} ></input>
             <h4 >OR</h4>
             <input placeholder='Enter Option Two Text Here' onChange={handleOptionTwo} style={{ padding: 20, width: '90%', boxSizing: 'border-box' }}></input>
-            <button onClick={handleSubmit} style={{ background: 'lightgreen', width: "100%", height: 40, border: 'none', marginTop: 20 }}>Submit</button>
+            <Link to="/Home">
+                <button onClick={handleSubmit} style={{ background: 'lightgreen', width: "100%", height: 40, border: 'none', marginTop: 20 }}>Submit</button>
+            </Link>
         </div>
     )
 }

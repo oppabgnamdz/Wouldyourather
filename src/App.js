@@ -14,6 +14,7 @@ import LeaderBoard from './containers/LeaderBoard';
 import NewQuestion from './containers/NewQuestion';
 import Detail from './containers/Detail';
 import VoteResult from './containers/VoteResult';
+import PageError from './containers/PageError';
 function App({ store }) {
   return (
     <Provider store={store}>
@@ -32,6 +33,7 @@ function App({ store }) {
               </Route>
               <Route path="/VoteResult/:id" component={VoteResult}>
               </Route>
+              <Route path='/PageError' component={PageError} />
               <Route path="/" component={Login}>
               </Route>
             </Switch>

@@ -42,10 +42,10 @@ export const Navigation = ({ stateLogin, logOut }) => {
             <Link onClick={homeClick} to='/Home'>
                 <li>Home</li>
             </Link>
-            <Link onClick={LeaderBoardClick} to='LeaderBoard'>
+            <Link onClick={LeaderBoardClick} to='/LeaderBoard'>
                 <li>Leader Board</li>
             </Link>
-            <Link onClick={NewQuestionClick} to='NewQuestion'>
+            <Link onClick={NewQuestionClick} to='/NewQuestion'>
                 <li>New Question</li>
             </Link>
             <RenderSignout />
