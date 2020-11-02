@@ -30,7 +30,7 @@ function App({ store }) {
               </Route>
               <Route path="/Detail" component={Detail}>
               </Route>
-              <Route path="/VoteResult" component={VoteResult}>
+              <Route path="/VoteResult/:id" component={VoteResult}>
               </Route>
               <Route path="/" component={Login}>
               </Route>

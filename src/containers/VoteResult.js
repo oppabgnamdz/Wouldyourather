@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchQuestion, fetchDataLogin } from '../actions'
-import { useLocation, } from 'react-router-dom'
+import { Redirect, useLocation, } from 'react-router-dom'
 import logo from '../images/check.png'
 import { BarLoader } from 'react-spinners'
 
-export const VoteResult = ({ user, users, questions, fetchDataLogin, fetchQuestion }) => {
+export const VoteResult = ({ user, users, questions, fetchDataLogin, fetchQuestion, match }) => {
+    localStorage.setItem('check', match.params.id)
     let qid = useLocation().value;
     const [loading, setLoading] = useState(false);
-   
+
     useEffect(() => {
         fetchDataLogin();
         fetchQuestion();
@@ -17,7 +18,10 @@ export const VoteResult = ({ user, users, questions, fetchDataLogin, fetchQuesti
         }, 1000)
     }, [])
     if (!user) {
-        return (<div style={{ color: 'red' }}>404 not found</div>)
+        return (<div>
+            <div style={{ color: 'red' }}>404 not found</div>
+            < Redirect from='/VoteResult' to='/' />
+        </div>)
     }
     const vote1Number = questions[qid].optionOne.votes.length;
     const vote2Number = questions[qid].optionTwo.votes.length;

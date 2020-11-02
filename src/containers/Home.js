@@ -4,22 +4,27 @@ import { fetchQuestion, fetchDataLogin, saveQuestionAnswer, loginAction } from '
 import { Link } from 'react-router-dom'
 import { BarLoader } from 'react-spinners'
 
-
-
 export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer, fetchDataLogin, setNewUser }) => {
     const [toggle, setToggle] = useState(true);
     const [answer, setAnswer] = useState(null);
 
     const [loading, setLoading] = useState(false);
-
     let qUnAnswer = null;
+
     useEffect(() => {
         fetchQuestion()
         fetchDataLogin()
         setTimeout(() => {
             setLoading(true)
+
         }, 1000)
     }, [toggle])
+    if (localStorage.getItem('check')) {
+        if (Object.keys(questions).indexOf(localStorage.getItem('check')) === -1) {
+            return (<div style={{ color: 'red' }}>404 not found</div>)
+        }
+
+    }
     function handleRender() {
         let filter = Object.keys(questions).filter(item => {
             if (Object.keys(user.answers).indexOf(item) == -1) {
@@ -136,7 +141,7 @@ export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer
                                             <div style={{ padding: 10, borderColor: 'gray', borderWidth: 1, borderLeftStyle: 'dotted' }}>
                                                 <p style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Would you rather</p>
                                                 <p style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>{"..." + obj.optionOne.text}</p>
-                                                <Link to={{ pathname: '/VoteResult', value: obj.id }}>
+                                                <Link to={{ pathname: `/VoteResult/${obj.id}`, value: obj.id }}>
                                                     <button style={{ backgroundColor: 'white', color: 'rgb(17, 186, 243)', width: '100%', borderColor: 'rgb(17, 186, 243)', padding: 5, borderRadius: 5 }}>View Poli</button>
                                                 </Link>
                                             </div>
@@ -160,7 +165,6 @@ export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer
 }
 
 const mapStateToProps = (state) => {
-
     return {
         user: state.userLogin,
         questions: state.GetAllQuestion,

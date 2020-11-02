@@ -25,7 +25,6 @@ export const Login = (props) => {
         })
     }
     function _login(e) {
-
         try {
             props.loginAction(props.getAllUser[userName])
         } catch (Ex) {
@@ -56,7 +55,7 @@ export const Login = (props) => {
                         })}
                     </select>
                 </div>
-                <Link onClick={_login} to='/Home'>
+                <Link onClick={_login} to={`/Home`}>
                     <button style={{ background: 'lightgreen', width: "100%", height: 40, border: 'none' }}>Sign in</button>
                 </Link>
             </div>) : (<div>
@@ -69,7 +68,7 @@ export const Login = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        getAllUser: state.GetAllUser ? state.GetAllUser : []
+        getAllUser: state.GetAllUser ? state.GetAllUser : [],
     }
 }
 

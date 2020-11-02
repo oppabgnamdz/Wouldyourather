@@ -9,7 +9,10 @@ export const Navigation = ({ stateLogin, logOut }) => {
         if (!stateLogin) return <div></div>
         else {
             return (
-                <Link onClick={() => { logOut() }} to='/'>
+                <Link onClick={() => {
+                    logOut()
+                    localStorage.clear();
+                }} to='/'>
                     <div className='signout_hover' style={{ display: 'flex' }}>
                         <img style={{ width: 40, height: 40, borderRadius: '50%' }} src={stateLogin.avatarURL}></img>
                         <li style={{ color: 'red' }}>{stateLogin.name}</li>

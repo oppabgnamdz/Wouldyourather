@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { saveQuestion } from '../actions'
 
 export const NewQuestion = ({ saveQuestion, userName }) => {
+    localStorage.clear();
     const [optionOne, setOptionOne] = useState();
     const [optionTwo, setOptionTwo] = useState();
     if (!userName) {

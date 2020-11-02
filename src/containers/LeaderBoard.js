@@ -5,6 +5,7 @@ import { BarLoader } from 'react-spinners'
 
 export const LeaderBoard = ({ users, load, user }) => {
     const [loading, setLoading] = useState(false);
+    localStorage.clear()
     useEffect(() => {
         load();
         setTimeout(() => {
