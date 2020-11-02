@@ -1,11 +1,19 @@
-import React, { Component, useEffect } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { fetchDataLogin, fetchQuestion } from '../actions'
+import { BarLoader } from 'react-spinners'
 
-export const LeaderBoard = ({ users, load }) => {
+export const LeaderBoard = ({ users, load, user }) => {
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         load();
+        setTimeout(() => {
+            setLoading(true)
+        }, 1000)
     }, [])
+    if (!user) {
+        return (<div style={{ color: 'red' }}>404 not found</div>)
+    }
     const listDefault = Object.keys(users)
     const listSort = listDefault.sort(function (a, b) {
         const userA = users[a];
@@ -49,13 +57,16 @@ export const LeaderBoard = ({ users, load }) => {
     })
     return (
         <div style={{ background: 'white', color: 'black' }}>
-            {card}
+            {loading ? card : (<div>
+                <BarLoader size={48} width="100" color='red' />
+            </div>)}
         </div>
     )
 }
 
 const mapStateToProps = state => {
     return {
+        user: state.userLogin,
         users: state.GetAllUser
     }
 }

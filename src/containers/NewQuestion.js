@@ -5,6 +5,9 @@ import { saveQuestion } from '../actions'
 export const NewQuestion = ({ saveQuestion, userName }) => {
     const [optionOne, setOptionOne] = useState();
     const [optionTwo, setOptionTwo] = useState();
+    if (!userName) {
+        return (<div style={{ color: 'red' }}>404 not found</div>)
+    }
     function handleOptionOne(e) {
         const text = e.target.value;
         setOptionOne(text)
@@ -31,10 +34,10 @@ export const NewQuestion = ({ saveQuestion, userName }) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     if (state.userLogin) {
         return {
             userName: state.userLogin.id,
+
         }
     }
 }

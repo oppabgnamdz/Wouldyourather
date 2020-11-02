@@ -6,27 +6,20 @@ import { saveQuestionAnswer } from '../actions'
 export const Detail = ({ saveQuestionAnswer }) => {
     const [valueOption, setValueOption] = useState(null);
     let valueParam = useLocation().value;
-    console.log(valueParam)
 
     let users = valueParam.users;
-    console.log(valueParam)
     let obj = valueParam.questions[valueParam.qid]
-    console.log(obj)
     function handleGetImage(name) {
         return users[name].avatarURL
     }
     function getOption(e) {
-        console.log(e)
         setValueOption(e.target.value)
 
     }
     function handleSaveAnswerQuestion() {
 
         if (valueOption) {
-            console.log('handle save')
-            console.log(valueParam.authedUser)
-            console.log(valueParam.qid)
-            console.log(valueOption)
+           
             saveQuestionAnswer({ authedUser: valueParam.authedUser, qid: valueParam.qid, answer: valueOption })
         }
     }

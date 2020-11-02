@@ -6,7 +6,6 @@ import { loginAction } from '../actions'
 
 export const Navigation = ({ stateLogin, logOut }) => {
     const RenderSignout = () => {
-        console.log(stateLogin)
         if (!stateLogin) return <div></div>
         else {
             return (
