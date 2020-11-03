@@ -17,18 +17,13 @@ export const VoteResult = ({ user, users, questions, fetchDataLogin, fetchQuesti
             setLoading(true)
         }, 1000)
     }, [])
-    console.log('uiqwueiqueiquieuqieuqwieuqwoieuqwoieuqoiwweu')
-    console.log(user)
     if (!user) {
         return (<div>
             < Redirect from='/VoteResult' to='/' />
         </div>)
     }
-    console.log(qid)
-    const vote1Number = questions[qid].optionOne.votes.length;
-    const vote2Number = questions[qid].optionTwo.votes.length;
-    const totalVote = vote1Number + vote2Number;
-    const choose = user.answers[qid] === 'optionOne' ? true : false
+
+    const chooses = user.answers[qid]
     return (
         <div style={{ marginBottom: 30, borderRadius: 5, borderColor: 'gray', borderWidth: 1, borderStyle: 'dotted' }} >
             {loading ? (
@@ -42,29 +37,16 @@ export const VoteResult = ({ user, users, questions, fetchDataLogin, fetchQuesti
                         </div>
                         <div style={{ padding: 10, borderColor: 'gray', borderWidth: 1, borderLeftStyle: 'dotted' }}>
                             <p style={{ color: 'black', fontSize: 20, fontWeight: 'bold', textAlign: 'left' }}>Results:</p>
-                            {/* <p style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>Mytext</p> */}
-                            <div style={{ backgroundColor: choose ? 'cyan' : 'white', borderColor: 'gray', borderWidth: 1, borderStyle: 'solid', borderRadius: 10, marginTop: 10, position: 'relative' }}>
-                                <p style={{ color: 'black', fontSize: 15, fontWeight: 'bold', textAlign: 'left', padding: 10, width: 220 }}>{"Would you rather " + questions[qid].optionOne.text + " ?"}</p>
-                                <div style={{ backgroundColor: '#F9F7F9', width: '100%', height: 30 }}>
-                                    <div style={{ backgroundColor: 'lightgreen', width: `${(vote1Number / totalVote) * 100}%`, height: 30, fontSize: 20, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                        <span> {`${parseFloat((vote1Number / totalVote) * 100).toFixed(2)}%`}</span>
-                                    </div>
-                                </div>
-                                <p style={{ color: 'black', fontSize: 20, marginTop: 10 }}>{vote1Number + " of " + totalVote + " votes"}</p>
-                                <img style={{ width: 30, height: 30, position: 'absolute', top: 0, right: 0, display: choose ? 'block' : 'none', borderTopRightRadius: 10 }} src={logo} />
-                            </div>
-                            <div style={{ backgroundColor: choose ? 'white' : 'cyan', borderColor: 'gray', borderWidth: 1, borderStyle: 'solid', marginTop: 20, borderRadius: 10, position: 'relative' }}>
-                                <p style={{ color: 'black', fontSize: 15, fontWeight: 'bold', textAlign: 'left', padding: 10, width: 220 }}>{"Would you rather " + questions[qid].optionTwo.text + " ?"}</p>
-                                <div style={{ backgroundColor: '#F9F7F9', width: '100%', height: 30 }}>
-                                    <div style={{ backgroundColor: 'lightgreen', width: `${(vote2Number / totalVote) * 100}%`, height: 30, fontSize: 20, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                        <span>{`${parseFloat((vote2Number / totalVote) * 100).toFixed(2)}%`}</span>
-                                    </div>
-                                </div>
-                                <p style={{ color: 'black', fontSize: 20, marginTop: 10 }}>{vote2Number + " of " + totalVote + " votes"}</p>
+                            {Object.keys(questions[qid].options).map((item, index) => {
+                                return (
+                                    <div key={index} style={{ backgroundColor: chooses.indexOf(item) === -1 ? 'white' : 'cyan', borderColor: 'gray', borderWidth: 1, borderStyle: 'solid', borderRadius: 10, marginTop: 10, position: 'relative' }}>
+                                        <p style={{ color: 'black', fontSize: 15, fontWeight: 'bold', textAlign: 'left', padding: 10, width: 220 }}>{"Would you rather " + questions[qid].options[item].text + " ?"}</p>
 
-                                <img style={{ width: 30, height: 30, position: 'absolute', top: 0, right: 0, display: choose ? 'none' : 'block', borderTopRightRadius: 10 }} src={logo} />
-                            </div>
-
+                                        <p style={{ color: 'black', fontSize: 20, marginTop: 10 }}>{questions[qid].options[item].votes.length + " /3 votes"}</p>
+                                        <img style={{ width: 30, height: 30, position: 'absolute', top: 0, right: 0, display: chooses.indexOf(item) === -1 ? 'none' : 'block', borderTopRightRadius: 10 }} src={logo} />
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>

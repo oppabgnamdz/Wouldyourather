@@ -17,13 +17,7 @@ export const Login = (props) => {
 
 
     }, [])
-    // console.log(Object.keys(props.questions).indexOf(localStorage.getItem('check')) === -1)
-    // console.log(localStorage.getItem('check'))
-    // if (localStorage.getItem('check')) {
-    //     if (Object.keys(props.questions).indexOf(localStorage.getItem('check')) === -1) {
-    //         log = "/PageError"
-    //     }
-    console.log(localStorage.getItem('check'))
+  
 
     // }
     const handleEvent = (e) => {

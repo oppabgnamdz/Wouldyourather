@@ -20,7 +20,7 @@ export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer
 
         }, 1000)
     }, [toggle])
-    
+
     function handleRender() {
         let filter = Object.keys(questions).filter(item => {
             if (Object.keys(user.answers).indexOf(item) == -1) {
@@ -86,7 +86,6 @@ export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer
                         </div>
                         <div className="list" style={{ background: 'white', padding: 10, borderRadius: 10 }}>
                             {qUnAnswer && qUnAnswer.map(item => {
-
                                 const obj = questions[item];
                                 return (
                                     <div key={obj.id} style={{ marginBottom: 30, borderRadius: 5, borderColor: 'gray', borderWidth: 1, borderStyle: 'dotted' }}>
@@ -97,7 +96,7 @@ export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer
                                             <img style={{ width: 100, height: 100, borderRadius: "50%" }} src={handleGetImage(obj.author)}></img>
                                             <div style={{ padding: 10, borderColor: 'gray', borderWidth: 1, borderLeftStyle: 'dotted' }}>
                                                 <p style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Would you rather</p>
-                                                <p style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>{"..." + obj.optionOne.text}</p>
+                                                <p style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>{"..." + obj.options[Object.keys(obj.options)[0]].text}</p>
                                                 <Link to={{ pathname: `/Detail/${obj.id}`, value: { authedUser: user.id, qid: obj.id, users: users, questions: questions } }}>
                                                     <button style={{ backgroundColor: 'white', color: 'rgb(17, 186, 243)', width: '100%', borderColor: 'rgb(17, 186, 243)', padding: 5, borderRadius: 5 }}>View Poli</button>
                                                 </Link>
@@ -126,7 +125,6 @@ export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer
                         <div className="list" style={{ background: 'white', padding: 10, borderRadius: 10 }}>
                             {answer && answer.map(item => {
                                 const obj = questions[item];
-
                                 return (
                                     <div key={obj.id} style={{ marginBottom: 30, borderRadius: 5, borderColor: 'gray', borderWidth: 1, borderStyle: 'dotted', backgroundColor: 'white' }}>
                                         <div>
@@ -136,7 +134,7 @@ export const Home = ({ user, fetchQuestion, questions, users, saveQuestionAnswer
                                             <img style={{ width: 100, height: 100, borderRadius: "50%" }} src={handleGetImage(obj.author)}></img>
                                             <div style={{ padding: 10, borderColor: 'gray', borderWidth: 1, borderLeftStyle: 'dotted' }}>
                                                 <p style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Would you rather</p>
-                                                <p style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>{"..." + obj.optionOne.text}</p>
+                                                <p style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>{"..." + obj.options[Object.keys(obj.options)[0]].text}</p>
                                                 <Link to={{ pathname: `/VoteResult/${obj.id}`, value: obj.id }}>
                                                     <button style={{ backgroundColor: 'white', color: 'rgb(17, 186, 243)', width: '100%', borderColor: 'rgb(17, 186, 243)', padding: 5, borderRadius: 5 }}>View Poli</button>
                                                 </Link>

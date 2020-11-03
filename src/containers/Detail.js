@@ -6,7 +6,11 @@ import PageError from './PageError'
 
 export const Detail = ({ saveQuestionAnswer, user, match }) => {
     localStorage.setItem('check', match.params.id)
-    const [valueOption, setValueOption] = useState("optionOne");
+    const [valueOption, setValueOption] = useState([]);
+    const [objMultiple, setObjMultiple] = useState(new Map());
+
+
+    const [multiple, setMultiple] = useState(false);
     let valueParam = useLocation().value;
     if (!user) {
         return (<div>
@@ -19,15 +23,43 @@ export const Detail = ({ saveQuestionAnswer, user, match }) => {
         return users[name].avatarURL
     }
     function getOption(e) {
-        setValueOption(e.target.value)
+
+
+        if (e.target.type === 'radio') {
+            const clone = []
+            clone.push(e.target.value)
+            setValueOption(clone)
+        }
+        if (e.target.type === 'checkbox') {
+            const clone = []
+            let isChecked = e.target.checked;
+            let item = e.target.value;
+            setObjMultiple(objMultiple.set(item, isChecked));
+            objMultiple.forEach((value, key) => {
+
+                if (value === true) {
+                    clone.push(key)
+                }
+            })
+            setValueOption(clone)
+        }
+
+
 
     }
+    function getMultiple(e) {
+        const choose = e.target.value
+        if (choose === 'multiple') {
+            setMultiple(true)
+        } else {
+            setMultiple(false)
+        }
+    }
     function handleSaveAnswerQuestion() {
-
         if (valueOption) {
-
             saveQuestionAnswer({ authedUser: valueParam.authedUser, qid: valueParam.qid, answer: valueOption })
         }
+
     }
     return (
         <div>
@@ -39,15 +71,40 @@ export const Detail = ({ saveQuestionAnswer, user, match }) => {
                     <img style={{ width: 100, height: 100, borderRadius: "50%" }} src={handleGetImage(obj.author)}></img>
                     <div style={{ padding: 10, borderColor: 'gray', borderWidth: 1, borderLeftStyle: 'dotted' }}>
                         <p style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>Would you rather</p>
-                        <div onChange={getOption}>
-                            <div style={{ width: 300 }}>
-                                <input defaultChecked type="radio" value="optionOne" name="option" id='option1' />
-                                <label htmlFor='option1' style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>{"..." + obj.optionOne.text}</label>
+                        <p style={{ color: 'black', fontSize: 15, fontWeight: 'lighter' }}>Choose your option</p>
+                        <div onChange={getMultiple} style={{ display: 'flex', justifyContent: 'space-around' }}>
+                            <div style={{}}>
+                                <input type="radio" value='multiple' name="option" id='option1' />
+                                <label htmlFor='option1' style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>Multiple</label>
                             </div>
-                            <div style={{ width: 300 }}>
-                                <input type="radio" value="optionTwo" name="option" id='option2' />
-                                <label htmlFor='option2' style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>{"..." + obj.optionTwo.text}</label>
+                            <div style={{}}>
+                                <input defaultChecked type="radio" value='single' name="option" id='option2' />
+                                <label htmlFor='option2' style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>Single</label>
                             </div>
+                        </div>
+
+                        <div style={{ borderTopStyle: 'solid', borderWidth: 1, borderColor: 'aqua', marginTop: 10 }} onChange={getOption}>
+
+                            {!multiple &&
+                                Object.keys(obj.options).map((item, index) => {
+                                    return (
+                                        <div key={index} style={{ width: 300 }}>
+                                            <input type="radio" value={item} name="option" id={item} />
+                                            <label htmlFor={item} style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>{"..." + obj.options[item].text}</label>
+                                        </div>
+                                    )
+                                })
+                            }
+                            {multiple &&
+                                Object.keys(obj.options).map((item, index) => {
+                                    return (
+                                        <div key={index} style={{ width: 300 }}>
+                                            <input type="checkbox" value={item} name="option" id={item} />
+                                            <label htmlFor={item} style={{ color: 'gray', fontSize: 15, fontWeight: 'normal', textAlign: 'left', padding: 10, width: 200 }}>{"..." + obj.options[item].text}</label>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                         <Link to={{ pathname: `/VoteResult/${valueParam.qid}`, value: valueParam.qid }} onClick={handleSaveAnswerQuestion}>
                             <button style={{ backgroundColor: 'white', color: 'rgb(17, 186, 243)', width: '100%', borderColor: 'rgb(17, 186, 243)', padding: 5, borderRadius: 5 }}>Submit</button>

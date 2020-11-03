@@ -1,34 +1,28 @@
 export let users = {
-    sarahedo: {
-        id: 'sarahedo',
-        name: 'Sarah Edo',
+    robo1: {
+        id: 'robo1',
+        name: 'Rô bốt đỏ',
         avatarURL: "https://robohash.org/1",
         answers: {
-            "8xf0y6ziyjabvozdd253nd": 'optionOne',
-            "6ni6ok3ym7mf1p33lnez": 'optionTwo',
-            "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-            "loxhs1bqm25b708cmbf3g": 'optionTwo'
+
         },
         questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
     },
-    tylermcginnis: {
-        id: 'tylermcginnis',
-        name: 'Tyler McGinnis',
+    robo2: {
+        id: 'robo2',
+        name: 'Rô bốt vàng',
         avatarURL: "https://robohash.org/2",
         answers: {
-            "vthrdm985a262al8qx3do": 'optionOne',
-            "xj352vofupe1dqz9emx13r": 'optionTwo',
+
         },
         questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
     },
-    johndoe: {
-        id: 'johndoe',
-        name: 'John Doe',
+    robo3: {
+        id: 'robo3',
+        name: 'Rô bốt tím',
         avatarURL: "https://robohash.org/3",
         answers: {
-            "xj352vofupe1dqz9emx13r": 'optionOne',
-            "vthrdm985a262al8qx3do": 'optionTwo',
-            "6ni6ok3ym7mf1p33lnez": 'optionTwo'
+
         },
         questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
     }
@@ -37,80 +31,140 @@ export let users = {
 let questions = {
     "8xf0y6ziyjabvozdd253nd": {
         id: '8xf0y6ziyjabvozdd253nd',
-        author: 'sarahedo',
+        author: 'robo1',
         timestamp: 1467166872634,
-        optionOne: {
-            votes: ['sarahedo'],
-            text: 'have horrible short term memory',
-        },
-        optionTwo: {
-            votes: [],
-            text: 'have horrible long term memory'
+        options: {
+            '8xf0y6ziyjabvozddd253ab': {
+                votes: [],
+                text: 'Ronaldo'
+            },
+            '8xf0y6ziyjabvozdd253cbc': {
+                votes: [],
+                text: 'Messi'
+            }
         }
     },
     "6ni6ok3ym7mf1p33lnez": {
         id: '6ni6ok3ym7mf1p33lnez',
-        author: 'johndoe',
+        author: 'robo2',
         timestamp: 1468479767190,
-        optionOne: {
-            votes: [],
-            text: 'become a superhero',
-        },
-        optionTwo: {
-            votes: ['johndoe', 'sarahedo'],
-            text: 'become a supervillain'
+        options: {
+            '8xf0y6ziyjabvodzdd253cd': {
+                votes: [],
+                text: 'Mac OS'
+            },
+            '8xf0y6ziyjabavozdd253de': {
+                votes: [],
+                text: 'Linux'
+            },
+            "8xf0y6ziyjabzvozdd253ef": {
+                votes: [],
+                text: 'Window'
+            }
         }
     },
     "am8ehyc8byjqgar0jgpub9": {
         id: 'am8ehyc8byjqgar0jgpub9',
-        author: 'sarahedo',
+        author: 'robo1',
         timestamp: 1488579767190,
-        optionOne: {
-            votes: [],
-            text: 'be telekinetic',
-        },
-        optionTwo: {
-            votes: ['sarahedo'],
-            text: 'be telepathic'
+        options: {
+            '8xf0y6ziyjabvo4zdvd253fg': {
+                votes: [],
+                text: 'Đông'
+            },
+            '8xf0y6ziyja2abvozdd253gh': {
+                votes: [],
+                text: 'Tây'
+            },
+            "8xf0y6ziyjabvoaz3dd253hi": {
+                votes: [],
+                text: 'Nam'
+            },
+            "8xf0y6ziyjabv1ozfdd253ij": {
+                votes: [],
+                text: 'Bắc'
+            }
+
         }
     },
     "loxhs1bqm25b708cmbf3g": {
         id: 'loxhs1bqm25b708cmbf3g',
-        author: 'tylermcginnis',
+        author: 'robo2',
         timestamp: 1482579767190,
-        optionOne: {
-            votes: [],
-            text: 'be a front-end developer',
-        },
-        optionTwo: {
-            votes: ['sarahedo'],
-            text: 'be a back-end developer'
+        options: {
+            '8xf0y6ziyjaebvozdd253jk': {
+                votes: [],
+                text: 'Kim'
+            },
+            '8xf0y6ziyjabvozdfd253kl': {
+                votes: [],
+                text: 'Mộc'
+            },
+            "8xf0y6ziyjabvofzdd253lm": {
+                votes: [],
+                text: 'Thủy'
+            },
+            "8xf0y6sdziyjabvozdd253mn": {
+                votes: [],
+                text: 'Hỏa'
+            },
+            "8xf0y6ziyjabvoazdd253np": {
+                votes: [],
+                text: 'Thổ'
+            }
+
         }
+
     },
     "vthrdm985a262al8qx3do": {
         id: 'vthrdm985a262al8qx3do',
-        author: 'tylermcginnis',
+        author: 'robo3',
         timestamp: 1489579767190,
-        optionOne: {
-            votes: ['tylermcginnis'],
-            text: 'find $50 yourself',
-        },
-        optionTwo: {
-            votes: ['johndoe'],
-            text: 'have your best friend find $500'
+        options: {
+            '12f0y6ziyjabvvozdd253jk': {
+                votes: [],
+                text: 'Justatee'
+            },
+            '23f0y6ziyjaqbvozdd253kl': {
+                votes: [],
+                text: 'Rhymastic'
+            },
+            "34f0y6ziyjabevozdd253lm": {
+                votes: [],
+                text: 'Wowwy'
+            },
+            "45f0y6ziyjabvoezdd253mn": {
+                votes: [],
+                text: 'Karik'
+            },
+            "56f0y6ziyjabvwozdd253np": {
+                votes: [],
+                text: 'Suboizz'
+            },
+            "78f0y6ziyjabvoezdd253np": {
+                votes: [],
+                text: 'Binzz'
+            }
+
         }
     },
     "xj352vofupe1dqz9emx13r": {
         id: 'xj352vofupe1dqz9emx13r',
-        author: 'johndoe',
+        author: 'robo3',
         timestamp: 1493579767190,
-        optionOne: {
-            votes: ['johndoe'],
-            text: 'write JavaScript',
-        },
-        optionTwo: {
-            votes: ['tylermcginnis'],
-            text: 'write Swift'
+        options: {
+            '78f0y6ziyjabvozaa253np': {
+                votes: [],
+                text: 'Tam giác'
+            },
+            '78f0y6ziyjabvozbb253np': {
+                votes: [],
+                text: 'Hình Vuông'
+            },
+            '78f0y6ziyjabvozcc253np': {
+                votes: [],
+                text: 'Hình tròn'
+            }
         }
     },
 }
@@ -131,19 +185,12 @@ export function _getQuestions() {
     })
 }
 
-function formatQuestion({ optionOneText, optionTwoText, author }) {
+function formatQuestion({ options, author }) {
     return {
         id: generateUID(),
         timestamp: Date.now(),
         author,
-        optionOne: {
-            votes: [],
-            text: optionOneText,
-        },
-        optionTwo: {
-            votes: [],
-            text: optionTwoText,
-        }
+        options: options
     }
 }
 
@@ -184,18 +231,24 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
                 }
             }
 
-            questions = {
-                ...questions,
-                [qid]: {
-                    ...questions[qid],
-                    [answer]: {
-                        ...questions[qid][answer],
-                        votes: questions[qid][answer].votes.concat([authedUser])
+            answer.map(item => {
+                questions = {
+                    ...questions,
+                    [qid]: {
+                        ...questions[qid],
+                        options: {
+                            ...questions[qid].options,
+                            [item]: {
+                                ...questions[qid].options[item],
+                                votes: questions[qid].options[item].votes.concat([authedUser])
+                            }
+                        }
                     }
                 }
-            }
-
+             
+            })
+        
             res()
-        }, 500)
+        }, 0)
     })
 }
